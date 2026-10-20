@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+milvus_demo.db
+milvus_demo.db/
+data/chunks.jsonl
+eval/results.json
+models/
+milvus_lite_test*.db/
+.idea/
+.vscode/
