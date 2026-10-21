@@ -6,7 +6,7 @@ from pdf_split_demo import load_and_split_pdf
 from rag_pipeline import rag_query
 from vector_store import create_vector_store
 
-app = FastAPI(title="极简RAG后端服务")
+app = FastAPI(title="RAG后端服务")
 
 
 class IngestRequest(BaseModel):

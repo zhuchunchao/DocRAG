@@ -8,9 +8,9 @@
 
 基于检索增强生成（RAG）的私有文档问答 Demo：上传 PDF → 解析分块 → 向量入库 → **混合检索（向量 + BM25 + RRF）** → 可选 **BGE Rerank** → 大模型依据上下文回答，并展示引用来源（文件名 + 页码 + 原文摘要）。
 
-当前重点是把「检索 → 重排 → 生成 → 溯源」主链路跑通，并提供 Gradio 演示与 **20 题评测脚本**，便于本地验收和面试讲解。
+当前重点是把「检索 → 重排 → 生成 → 溯源」主链路跑通，并提供 Gradio 演示与 **20 题评测脚本**。
 
-## 已实现功能
+## 实现功能
 
 - PDF 加载与递归字符分块（默认 chunk_size=500，overlap=80）
 - 中文向量化：`BAAI/bge-small-zh-v1.5`（本地 CPU）
@@ -23,12 +23,7 @@
 - FastAPI：`/ingest`、`/query`（支持 `use_hybrid` / `use_rerank`）
 - **评测**：`eval/eval_set.json`（20 题）+ `eval/run_eval.py`（Hit@K / 关键词覆盖 / 时延）
 
-## 暂未实现（计划中）
 
-- LangGraph 工具调用 Agent
-- 线上部署 / 鉴权 / 多用户会话
-
-> 简历与面试请只写已实现部分；**具体 Hit@K / 时延数字以本地运行 `eval/run_eval.py` 生成的 `eval/results.json` 为准**，请勿手写未跑通的指标。
 
 ## 技术栈
 
@@ -85,7 +80,7 @@ cd DocRAG
 pip install -r requirements.txt
 ```
 
-3. 配置 `.env`（不要把 Key 写进代码）：
+3. 配置 `.env`：
 
 ```env
 DEEPSEEK_API_KEY=你的密钥
@@ -122,7 +117,7 @@ HF_ENDPOINT=https://hf-mirror.com
 .\.venv\Scripts\python.exe main.py
 ```
 
-- `POST /ingest`：`{"pdf_path": "本地文档/政治.pdf"}`
+- `POST /ingest`：`{"pdf_path": "本地文档/你的文件.pdf"}`
 - `POST /query`：`{"question": "你的问题", "top_k": 5, "use_hybrid": true, "use_rerank": true}`
 
 ## 混合检索与 Rerank 说明
@@ -220,18 +215,5 @@ $env:RERANKER_ALLOW_DOWNLOAD='1'   # 走 HF_ENDPOINT（默认 hf-mirror.com）
 
 Prompt 要求模型严格依据上下文作答；上下文缺失时回答「不知道」，减少胡编。
 
-## 安全提醒
 
-- API Key 仅放在 `.env`，已加入 `.gitignore`
-- 若 Key 曾出现在代码或聊天记录中，请到 DeepSeek 控制台轮换
-- 不要把 `.env`、`milvus_demo.db`、`data/chunks.jsonl` 推到公开仓库
 
-## 后续迭代建议
-
-1. 用评测结果指导分块参数 / fetch_k / top_k
-2. 用 LangGraph 扩展工具调用 Agent（二期）
-3. 补架构图与演示录屏，便于投递时附链接
-
-## 许可证
-
-个人学习项目，仅供学习与求职展示。

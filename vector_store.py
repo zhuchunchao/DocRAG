@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
 import json
 import os
 from pathlib import Path
 
 # hf 国内镜像
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
-# 关闭 windows 软链接警告
 os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 
@@ -14,7 +12,6 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 
 ROOT = Path(__file__).resolve().parent
 CHUNKS_PATH = ROOT / "data" / "chunks.jsonl"
-# pymilvus Lite 必须用 uri（不能用 url），且以 .db 结尾
 MILVUS_URI = os.environ.get("MILVUS_URI", "./milvus_demo.db")
 
 embedding_model = HuggingFaceEmbeddings(

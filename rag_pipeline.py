@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 from pathlib import Path
 
@@ -15,7 +14,7 @@ EMPTY_KB_ANSWER = (
     "请先通过 Gradio「入库」、FastAPI /ingest，"
     "或 `python eval/prepare_index.py --pdf 你的文件.pdf` 上传文档后再提问。"
 )
-NO_EVIDENCE_ANSWER = "不知道。知识库中不存在该内容（检索未找到足够依据），请换个问法或补充相关文档后再问。"
+NO_EVIDENCE_ANSWER = "知识库中不存在该内容（检索未找到足够依据），请换个问法或补充相关文档后再问。"
 
 RAG_PROMPT_TEMPLATE = """你是文档问答助手，请严格依据下面的上下文回答用户问题。
 规则：
@@ -47,7 +46,6 @@ def knowledge_base_ready() -> bool:
 
 
 def get_llm():
-    """懒加载 DeepSeek（ChatOpenAI），避免纯检索评测时强依赖 API Key。"""
     global _llm
     if _llm is not None:
         return _llm

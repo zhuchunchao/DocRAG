@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """混合检索：向量 + BM25 + RRF，可选 BGE Rerank。"""
 from __future__ import annotations
 

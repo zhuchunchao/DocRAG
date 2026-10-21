@@ -8,11 +8,7 @@ DOC_DIR = Path(__file__).resolve().parent / "本地文档"
 
 
 def resolve_pdf_path(pdf_path: str = None) -> Path:
-    """解析待处理的 PDF 路径。
-
-    优先级：显式传入的 pdf_path > 环境变量 RAG_DOC_PATH。
-    两者都没有时直接报错退出，绝不静默回退到某份写死的文档。
-    """
+   
     candidate = pdf_path or os.environ.get("RAG_DOC_PATH")
     if not candidate:
         raise SystemExit(
