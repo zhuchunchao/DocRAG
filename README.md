@@ -10,6 +10,14 @@
 
 当前重点是把「检索 → 重排 → 生成 → 溯源」主链路跑通，并提供 Gradio 演示与 **20 题评测脚本**。
 
+## 迭代记录
+
+- 2026-08　PDF 解析与递归分块（PyPDFLoader + RecursiveCharacterTextSplitter）
+- 2026-09　向量入库：Milvus Lite + `bge-small-zh-v1.5`
+- 2026-09　混合检索：BM25（jieba 分词）+ RRF 融合
+- 2026-10　BGE Rerank 与 20 题评测（Hit@K / 关键词覆盖 / 时延）
+- 2026-10　拒答机制与引用溯源
+
 ## 实现功能
 
 - PDF 加载与递归字符分块（默认 chunk_size=500，overlap=80）
@@ -183,7 +191,7 @@ $env:RERANKER_ALLOW_DOWNLOAD='1'   # 走 HF_ENDPOINT（默认 hf-mirror.com）
 .\.venv\Scripts\python.exe eval\run_eval.py --pdf 本地文档\你的文件.pdf
 ```
 
-> 注意：`eval/eval_set.json` 当前 20 题按「近现代史政治考点」编写，仅当你入库的是对应笔记时 Hit@K 才有意义；换了无关语料请同步改评测集。
+> 注意：`eval/eval_set.json` 当前 20 题按「Python 3 中文官方教程」语料编写，仅当你入库的是对应文档时 Hit@K 才有意义；换了无关语料请同步改评测集。
 
 ## 空库与拒答
 
