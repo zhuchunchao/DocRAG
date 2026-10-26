@@ -15,6 +15,7 @@ EMPTY_KB_ANSWER = (
     "或 `python eval/prepare_index.py --pdf 你的文件.pdf` 上传文档后再提问。"
 )
 NO_EVIDENCE_ANSWER = "知识库中不存在该内容（检索未找到足够依据），请换个问法或补充相关文档后再问。"
+DEGRADED_ANSWER_PREFIX = "（模型调用失败，已降级为检索直出，以下为检索到的原始片段，未经模型归纳）"
 
 RAG_PROMPT_TEMPLATE = """你是文档问答助手，请严格依据下面的上下文回答用户问题。
 规则：
@@ -59,6 +60,8 @@ def get_llm():
         api_key=api_key,
         model=os.getenv("DEEPSEEK_MODEL", "deepseek-chat"),
         temperature=0.1,
+        timeout=float(os.getenv("LLM_TIMEOUT", "30")),
+        max_retries=1,
     )
     return _llm
 
@@ -87,6 +90,26 @@ def _empty_result(question: str, answer: str):
         "context": "",
         "docs": [],
         "refused": True,
+        "degraded": False,
+    }
+
+
+def _degraded_result(question: str, packed: dict, reason: str):
+    """模型不可用时的降级结果：只回检索片段，不伪造答案。"""
+    lines = [DEGRADED_ANSWER_PREFIX, f"原因：{reason}", ""]
+    for s in packed.get("sources", []):
+        lines.append(f"[来源{s['index']}] {s['label']}")
+        lines.append(s["snippet"])
+        lines.append("")
+    return {
+        "question": question,
+        "answer": "\n".join(lines).strip(),
+        "sources": [{k: v for k, v in s.items() if k != "text"} for s in packed.get("sources", [])],
+        "context": packed.get("context") or "",
+        "docs": packed.get("docs", []),
+        "refused": False,
+        "degraded": True,
+        "degrade_reason": reason,
     }
 
 
@@ -174,21 +197,33 @@ def rag_query(
         out["context"] = packed.get("context") or ""
         return out
 
-    llm = get_llm()
-    final_prompt = prompt.format(
-        context=packed["context"] or "（无相关上下文）",
-        question=question,
-    )
-    answer = llm.invoke(final_prompt)
-    return {
-        "question": question,
-        "answer": answer.content,
-        "sources": [
-            {k: v for k, v in s.items() if k != "text"} for s in packed["sources"]
-        ],
-        "context": packed["context"],
-        "refused": False,
-    }
+    llm = None
+    reason = ""
+    try:
+        llm = get_llm()
+    except Exception as e:  # noqa: BLE001  未配置 Key 等：直接降级，而不是报错中断
+        reason = f"模型初始化失败：{e}"
+    if llm is not None:
+        final_prompt = prompt.format(
+            context=packed["context"] or "（无相关上下文）",
+            question=question,
+        )
+        try:
+            answer = llm.invoke(final_prompt)
+        except Exception as e:  # noqa: BLE001  超时/限流/网络异常：降级为检索直出
+            reason = f"{type(e).__name__}: {e}"
+        else:
+            return {
+                "question": question,
+                "answer": answer.content,
+                "sources": [
+                    {k: v for k, v in s.items() if k != "text"} for s in packed["sources"]
+                ],
+                "context": packed["context"],
+                "refused": False,
+                "degraded": False,
+            }
+    return _degraded_result(question, packed, reason or "未知原因")
 
 
 if __name__ == "__main__":

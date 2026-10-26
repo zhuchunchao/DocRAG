@@ -19,23 +19,23 @@
 - [x] `vector_store.py`：`uri=./milvus_demo.db`、chunks 落盘、`_vs_cache` 单例、`HF_ENDPOINT=hf-mirror.com`
 - [x] `rag_pipeline.py`：hybrid/rerank 参数、懒加载 LLM、空库/无命中拒答
 - [x] `app_gradio.py` / `main.py`：开关与 API 字段
-- [x] `eval/eval_set.json`（20 题政治考点）/ `prepare_index.py` / `run_eval.py`（强制 --pdf/--docs）
+- [x] `eval/eval_set.json`（20 题，Python 官方教程语料）/ `prepare_index.py` / `run_eval.py`（强制 --pdf/--docs）
 - [x] `requirements.txt` / `README.md` / `.gitignore`（新增忽略 `models/`）
 - [x] **`BAAI/bge-reranker-base` 权重已落地**：`models/models/BAAI--bge-reranker-base/snapshots/master/model.safetensors`（1.11GB，完整）
-- [x] **`eval/results.json` 已生成**（2026-10-19 18:48，`--no-llm`，`pdf=本地文档\政治.pdf`，`reranker_loaded=true`）
+- [x] **`eval/results.json` 已生成**（2026-10-21，`--no-llm`，`pdf=本地文档\Python官方教程.pdf`，`reranker_loaded=true`）
 - [x] 清理 `milvus_lite_test.db` / `milvus_lite_test2.db` / 半成品 `models/bge-reranker-base/` 与 HF 缓存残留
 
 ## 真实评测数字（源：`eval/results.json`）
 
 | mode | Hit@K | KwCoverage | AvgLatency(s) | P95Latency(s) |
 |------|-------|-----------|---------------|---------------|
-| vector | 95.00% | 90.00% | 0.061 | 0.064 |
-| hybrid | 100.00% | 95.00% | 0.052 | 0.056 |
-| hybrid+rerank | 100.00% | **97.50%** | 3.131 | 3.229 |
+| vector | 95.00% | 95.00% | 0.086 | 0.095 |
+| hybrid | 100.00% | 100.00% | 0.094 | 0.100 |
+| hybrid+rerank | 100.00% | 100.00% | 3.901 | 4.678 |
 
-- 20 题、top_k=5、fetch_k=20、仅检索（未调 DeepSeek）
+- 20 题、top_k=5、fetch_k=20、仅检索（未调 DeepSeek），语料=Python 3 中文官方教程（351 块）
 - `rerank_applied=true` 仅第三模式；前两模式为 false（如实标记，不假装重排）
-- Rerank 使关键词覆盖 +2.5pp，代价是 CPU 上约 +3s/题（单机 CPU 推理，面试可解释为"准确率换时延"）
+- 本语料上 Rerank 未再提升指标（hybrid 已达 100/100），代价是 CPU 上约 +3.8s/题
 
 ## 未完成（可选项）
 
@@ -64,10 +64,10 @@ cd D:\Users\zhuchunchao\Desktop\agi_code\DocRAG
 $env:PYTHONIOENCODING='utf-8'
 
 # 1) 重跑检索评测（三模式，reranker 走本地，无需联网）
-.\.venv\Scripts\python.exe eval\run_eval.py --no-llm --pdf "本地文档\政治.pdf"
+.\.venv\Scripts\python.exe eval\run_eval.py --no-llm --pdf "本地文档\Python官方教程.pdf"
 
 # 2) 全链路（含 LLM 答案关键词命中，需 .env 配好 Key）
-.\.venv\Scripts\python.exe eval\run_eval.py --pdf "本地文档\政治.pdf"
+.\.venv\Scripts\python.exe eval\run_eval.py --pdf "本地文档\Python官方教程.pdf"
 
 # 3) Gradio 演示
 .\.venv\Scripts\python.exe app_gradio.py   # http://127.0.0.1:7860

@@ -1,0 +1,257 @@
+{
+  "summary": {
+    "n": 25,
+    "tool_choice_accuracy": 1.0,
+    "answer_hit": 1.0,
+    "latency_avg_s": 2.457,
+    "latency_p95_s": 2.962
+  },
+  "items": [
+    {
+      "id": "d01",
+      "question": "DeepSeek API 的 base_url 是什么？API Key 怎么获取？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 6.421
+    },
+    {
+      "id": "d02",
+      "question": "怎么调用 DeepSeek 的对话补全（Chat Completions）接口？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.616
+    },
+    {
+      "id": "d03",
+      "question": "DeepSeek 目前提供哪些模型可以调用？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.509
+    },
+    {
+      "id": "d04",
+      "question": "temperature 参数在 DeepSeek API 里控制什么？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.179
+    },
+    {
+      "id": "d05",
+      "question": "怎样让 DeepSeek 模型输出 JSON 格式的结果？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.545
+    },
+    {
+      "id": "d06",
+      "question": "DeepSeek 的函数调用（tool_calls）是怎么工作的？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.956
+    },
+    {
+      "id": "d07",
+      "question": "DeepSeek API 的速率限制是怎样的？调用过快会怎样？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 1.726
+    },
+    {
+      "id": "l01",
+      "question": "什么是 RAG？它的基本流程包含哪几步？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.428
+    },
+    {
+      "id": "l02",
+      "question": "LangChain 里的检索器（Retriever）负责做什么？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.22
+    },
+    {
+      "id": "l03",
+      "question": "为什么要做文本分割？文档切块时要注意什么？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 3.665
+    },
+    {
+      "id": "l04",
+      "question": "嵌入模型（Embedding）在 LangChain 里起什么作用？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.948
+    },
+    {
+      "id": "l05",
+      "question": "向量存储（Vector Store）的作用是什么？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.38
+    },
+    {
+      "id": "l06",
+      "question": "LCEL 是什么？用它怎么把组件串成链？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.962
+    },
+    {
+      "id": "l07",
+      "question": "输出解析器（Output Parser）用来做什么？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.588
+    },
+    {
+      "id": "p01",
+      "question": "列表推导式的作用是什么？它的基本写法是怎样的？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.654
+    },
+    {
+      "id": "p02",
+      "question": "元组和列表有什么区别？元组可以修改吗？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.094
+    },
+    {
+      "id": "p03",
+      "question": "lambda 表达式用来创建什么？什么时候适合用它？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.488
+    },
+    {
+      "id": "p04",
+      "question": "什么是文档字符串（docstring）？它放在哪里？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.131
+    },
+    {
+      "id": "p05",
+      "question": "怎样自定义一个异常类？应该继承什么？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.199
+    },
+    {
+      "id": "p06",
+      "question": "虚拟环境（venv）用来解决什么问题？怎么创建？",
+      "tools": [
+        "search_docs"
+      ],
+      "tool_ok": true,
+      "answer_hit": 1,
+      "latency_s": 2.387
+    },
+    {
+      "id": "t01",
+      "question": "你现在的知识库里都有哪些文档？",
+      "tools": [
+        "list_docs"
+      ],
+      "expect": "list_docs",
+      "tool_ok": true,
+      "latency_s": 1.914
+    },
+    {
+      "id": "t02",
+      "question": "知识库一共收了多少个文本块？",
+      "tools": [
+        "doc_stats"
+      ],
+      "expect": "doc_stats",
+      "tool_ok": true,
+      "latency_s": 1.761
+    },
+    {
+      "id": "t03",
+      "question": "库里面一共有几份文档？",
+      "tools": [
+        "doc_stats"
+      ],
+      "expect": "doc_stats",
+      "tool_ok": true,
+      "latency_s": 1.284
+    },
+    {
+      "id": "t04",
+      "question": "今天上海天气怎么样？",
+      "tools": [],
+      "expect": null,
+      "tool_ok": true,
+      "latency_s": 0.897
+    },
+    {
+      "id": "t05",
+      "question": "帮我写一首关于春天的诗。",
+      "tools": [],
+      "expect": null,
+      "tool_ok": true,
+      "latency_s": 1.467
+    }
+  ]
+}

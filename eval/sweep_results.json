@@ -1,0 +1,208 @@
+{
+  "pdf": [
+    "D:\\Users\\zhuchunchao\\Desktop\\agi_code\\DocRAG\\本地文档\\Python官方教程.pdf",
+    "D:\\Users\\zhuchunchao\\Desktop\\agi_code\\DocRAG\\本地文档\\LangChain中文文档.pdf",
+    "D:\\Users\\zhuchunchao\\Desktop\\agi_code\\DocRAG\\本地文档\\DeepSeekAPI文档.pdf"
+  ],
+  "eval_n": 20,
+  "rows": [
+    {
+      "chunk_size": 800,
+      "overlap": 128,
+      "n_chunks": 934,
+      "fetch_k": 20,
+      "top_k": 5,
+      "hit_at_k": 1.0,
+      "keyword_coverage": 1.0,
+      "latency_avg_s": 0.0742,
+      "latency_p95_s": 0.0788
+    },
+    {
+      "chunk_size": 800,
+      "overlap": 128,
+      "n_chunks": 934,
+      "fetch_k": 10,
+      "top_k": 5,
+      "hit_at_k": 1.0,
+      "keyword_coverage": 1.0,
+      "latency_avg_s": 0.0775,
+      "latency_p95_s": 0.0891
+    },
+    {
+      "chunk_size": 800,
+      "overlap": 128,
+      "n_chunks": 934,
+      "fetch_k": 40,
+      "top_k": 5,
+      "hit_at_k": 1.0,
+      "keyword_coverage": 1.0,
+      "latency_avg_s": 0.0791,
+      "latency_p95_s": 0.0866
+    },
+    {
+      "chunk_size": 500,
+      "overlap": 80,
+      "n_chunks": 1389,
+      "fetch_k": 20,
+      "top_k": 5,
+      "hit_at_k": 1.0,
+      "keyword_coverage": 1.0,
+      "latency_avg_s": 0.1095,
+      "latency_p95_s": 0.1144
+    },
+    {
+      "chunk_size": 500,
+      "overlap": 80,
+      "n_chunks": 1389,
+      "fetch_k": 20,
+      "top_k": 3,
+      "hit_at_k": 1.0,
+      "keyword_coverage": 1.0,
+      "latency_avg_s": 0.1126,
+      "latency_p95_s": 0.1222
+    },
+    {
+      "chunk_size": 500,
+      "overlap": 80,
+      "n_chunks": 1389,
+      "fetch_k": 40,
+      "top_k": 3,
+      "hit_at_k": 1.0,
+      "keyword_coverage": 1.0,
+      "latency_avg_s": 0.1156,
+      "latency_p95_s": 0.1256
+    },
+    {
+      "chunk_size": 500,
+      "overlap": 80,
+      "n_chunks": 1389,
+      "fetch_k": 40,
+      "top_k": 5,
+      "hit_at_k": 1.0,
+      "keyword_coverage": 1.0,
+      "latency_avg_s": 0.1191,
+      "latency_p95_s": 0.1303
+    },
+    {
+      "chunk_size": 300,
+      "overlap": 48,
+      "n_chunks": 2179,
+      "fetch_k": 40,
+      "top_k": 5,
+      "hit_at_k": 1.0,
+      "keyword_coverage": 1.0,
+      "latency_avg_s": 0.1721,
+      "latency_p95_s": 0.1937
+    },
+    {
+      "chunk_size": 300,
+      "overlap": 48,
+      "n_chunks": 2179,
+      "fetch_k": 20,
+      "top_k": 5,
+      "hit_at_k": 1.0,
+      "keyword_coverage": 1.0,
+      "latency_avg_s": 0.1766,
+      "latency_p95_s": 0.1934
+    },
+    {
+      "chunk_size": 800,
+      "overlap": 128,
+      "n_chunks": 934,
+      "fetch_k": 20,
+      "top_k": 3,
+      "hit_at_k": 0.95,
+      "keyword_coverage": 0.95,
+      "latency_avg_s": 0.0746,
+      "latency_p95_s": 0.0838
+    },
+    {
+      "chunk_size": 800,
+      "overlap": 128,
+      "n_chunks": 934,
+      "fetch_k": 40,
+      "top_k": 3,
+      "hit_at_k": 0.95,
+      "keyword_coverage": 0.95,
+      "latency_avg_s": 0.0777,
+      "latency_p95_s": 0.082
+    },
+    {
+      "chunk_size": 500,
+      "overlap": 80,
+      "n_chunks": 1389,
+      "fetch_k": 10,
+      "top_k": 5,
+      "hit_at_k": 0.95,
+      "keyword_coverage": 0.95,
+      "latency_avg_s": 0.1197,
+      "latency_p95_s": 0.1353
+    },
+    {
+      "chunk_size": 300,
+      "overlap": 48,
+      "n_chunks": 2179,
+      "fetch_k": 20,
+      "top_k": 3,
+      "hit_at_k": 0.95,
+      "keyword_coverage": 0.95,
+      "latency_avg_s": 0.1623,
+      "latency_p95_s": 0.1797
+    },
+    {
+      "chunk_size": 300,
+      "overlap": 48,
+      "n_chunks": 2179,
+      "fetch_k": 40,
+      "top_k": 3,
+      "hit_at_k": 0.95,
+      "keyword_coverage": 0.95,
+      "latency_avg_s": 0.1686,
+      "latency_p95_s": 0.1878
+    },
+    {
+      "chunk_size": 800,
+      "overlap": 128,
+      "n_chunks": 934,
+      "fetch_k": 10,
+      "top_k": 3,
+      "hit_at_k": 0.9,
+      "keyword_coverage": 0.9,
+      "latency_avg_s": 0.1385,
+      "latency_p95_s": 0.3121
+    },
+    {
+      "chunk_size": 300,
+      "overlap": 48,
+      "n_chunks": 2179,
+      "fetch_k": 10,
+      "top_k": 5,
+      "hit_at_k": 0.9,
+      "keyword_coverage": 0.9,
+      "latency_avg_s": 0.169,
+      "latency_p95_s": 0.1898
+    },
+    {
+      "chunk_size": 500,
+      "overlap": 80,
+      "n_chunks": 1389,
+      "fetch_k": 10,
+      "top_k": 3,
+      "hit_at_k": 0.9,
+      "keyword_coverage": 0.9,
+      "latency_avg_s": 0.1801,
+      "latency_p95_s": 0.196
+    },
+    {
+      "chunk_size": 300,
+      "overlap": 48,
+      "n_chunks": 2179,
+      "fetch_k": 10,
+      "top_k": 3,
+      "hit_at_k": 0.9,
+      "keyword_coverage": 0.9,
+      "latency_avg_s": 0.2799,
+      "latency_p95_s": 0.3095
+    }
+  ]
+}
