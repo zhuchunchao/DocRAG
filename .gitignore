@@ -10,3 +10,5 @@ models/
 milvus_lite_test*.db/
 .idea/
 .vscode/
+
+HANDOFF.md
