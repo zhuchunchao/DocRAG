@@ -258,6 +258,23 @@
   .send{background:linear-gradient(135deg,var(--orange-2),var(--orange));color:#fff;border:none;border-radius:13px;padding:13px 24px;font-weight:700;font-size:.86rem;cursor:pointer;font-family:inherit;transition:.22s var(--ease);white-space:nowrap;box-shadow:0 12px 24px -14px rgba(226,101,26,.95)}
   .send:hover{transform:translateY(-2px)}
   .send:disabled{opacity:.45;cursor:not-allowed;transform:none}
+  a.btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;line-height:1.2}
+  .hint a{color:var(--orange);font-weight:600;text-decoration:none}
+  .hint a:hover{text-decoration:underline}
+
+  /* ===== Gradio 完整演示 ===== */
+  .gradio-embed{padding:12px;overflow:hidden}
+  .gradio-embed iframe{
+    display:block;width:100%;height:78vh;min-height:720px;border:0;
+    border-radius:var(--radius-sm);background:var(--paper-2);
+  }
+  .gradio-foot{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+    margin:10px 6px 4px;font-size:.74rem;color:var(--muted);line-height:1.6;
+  }
+  .gradio-foot a{color:var(--orange);font-weight:600;text-decoration:none}
+  .gradio-foot a:hover{text-decoration:underline}
+  @media (max-width:640px){.gradio-embed iframe{height:720px}}
 
   /* ===== 评测 ===== */
   .eval-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:16px}
@@ -344,6 +361,7 @@
     </div>
     <nav class="nav">
       <a href="#pipeline">检索管线</a>
+      <a href="#gradio">完整演示</a>
       <a href="#console">问答控制台</a>
       <a href="#eval">评测结果</a>
     </nav>
@@ -419,12 +437,39 @@
     </div>
   </section>
 
+  <!-- ===== Gradio 完整演示 ===== -->
+  <section class="sec" id="gradio">
+    <div class="sec-head reveal">
+      <div>
+        <div class="idx">02 / GRADIO</div>
+        <h2>Gradio 完整演示</h2>
+        <p>GitHub Pages 是静态页，不能托管 Python 后端。完整链路（向量检索 + BGE Rerank + DeepSeek）在 Gradio 上跑。分享地址为临时链接，大约一周内有效。</p>
+      </div>
+      <a class="btn primary" href="https://1fdd842a3a97de3175.gradio.live" target="_blank" rel="noopener noreferrer">打开 Gradio 完整演示 ↗</a>
+    </div>
+
+    <div class="panel gradio-embed reveal">
+      <iframe
+        title="DocRAG Gradio 完整演示"
+        src="https://1fdd842a3a97de3175.gradio.live"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allow="clipboard-read; clipboard-write"
+      ></iframe>
+      <div class="gradio-foot">
+        <span>若嵌入被浏览器拦截，用右侧链接在新标签页打开同一地址。</span>
+        <a href="https://1fdd842a3a97de3175.gradio.live" target="_blank" rel="noopener noreferrer">https://1fdd842a3a97de3175.gradio.live ↗</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== 控制台 ===== -->
   <section class="sec" id="console">
     <div class="sec-head reveal">
       <div>
-        <div class="idx">02 / CONSOLE</div>
+        <div class="idx">03 / CONSOLE</div>
         <h2>问答控制台</h2>
+        <p>浏览器内的轻量 BM25 演示仍保留在这里。完整向量检索、重排与生成请用上方的 Gradio。</p>
       </div>
       <span class="mono" style="font-size:.66rem;color:var(--muted)">换语料 · 调 Top-K · 拒答保护</span>
     </div>
@@ -448,7 +493,7 @@
 
         <div class="hint">
           浏览器内是<b>轻量 BM25 关键词检索</b>（中文按 2-gram 切分），够用来演示"检索 → 引用 → 拒答"。
-          真正的<b>向量检索 + BGE 重排 + DeepSeek 生成</b>在本地 Gradio / FastAPI 链路里跑。
+          真正的<b>向量检索 + BGE 重排 + DeepSeek 生成</b>在 <a href="#gradio">Gradio 完整演示</a> 上跑。
         </div>
       </aside>
 
@@ -501,7 +546,7 @@
   <section class="sec" id="eval">
     <div class="sec-head reveal">
       <div>
-        <div class="idx">03 / EVALUATION</div>
+        <div class="idx">04 / EVALUATION</div>
         <h2>评测结果</h2>
       </div>
       <div class="seg" id="segEval">
